@@ -75,6 +75,31 @@ android:layout_below="@id/BuildMuscleBtn">
         android:layout_below="@id/GainWeightBtn">
     </Button>
 
+    <Button
+        android:id="@+id/nextBtnWIP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:text="Next"
+        android:layout_below="@id/IncreaseStaminaBtn"
+        android:layout_marginTop="100dp"
+        >
+
+    </Button>
+
+    <Button
+        android:id="@+id/backBtnToNewAccount1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:text="Back"
+        android:layout_below="@id/nextBtnWIP"
+        android:layout_marginTop="10dp"
+        >
+
+    </Button>
 
     <ImageView
         android:id="@+id/logo"

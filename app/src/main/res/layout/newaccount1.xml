@@ -74,6 +74,8 @@
 
     </Button>
 
+
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -86,6 +88,19 @@
         android:padding="10dp"
         android:id="@+id/Female"
         android:layout_below="@id/Male"
+        >
+
+    </Button>
+
+    <Button
+        android:id="@+id/nextBtnToNewAccount2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:text="Next"
+        android:layout_below="@id/Female"
+        android:layout_marginTop="30dp"
         >
 
     </Button>

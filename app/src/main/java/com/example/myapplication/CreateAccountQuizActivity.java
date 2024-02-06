@@ -1,14 +1,43 @@
 package com.example.myapplication;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.view.View;
+import android.widget.Button;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class CreateAccountQuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newaccount1);
+
+        Button NEXT = (Button) findViewById(R.id.nextBtnToNewAccount2);
+
+        NEXT.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                changelayout2();
+            }
+        });
+
+    }
+
+    public void changelayout1() {
+        setContentView(R.layout.newaccount1);
+
+        Button NEXT = (Button) findViewById(R.id.nextBtnToNewAccount2);
+        NEXT.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                changelayout2();
+            }
+        });
+    }
+    public void changelayout2(){
+        setContentView(R.layout.newaccount2);
+
+        Button BACK = (Button) findViewById(R.id.backBtnToNewAccount1);
+        BACK.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                changelayout1();
+            }
+        });
     }
 }
