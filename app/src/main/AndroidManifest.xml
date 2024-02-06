@@ -12,22 +12,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
+
         <activity
             android:name=".StartupActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".CreateAccountActivity" >
+        <!-- Add this activity for CreateAccountActivity -->
+        <activity
+            android:name=".CreateAccountActivity"
+            android:exported="true">
         </activity>
 
+        <!-- Add other activities as needed -->
         <activity android:name=".loginActivity" >
         </activity>
 
+        <activity android:name=".CreateAccountQuizActivity" >
+        </activity>
     </application>
 
 </manifest>
