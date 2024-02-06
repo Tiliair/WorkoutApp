@@ -8,6 +8,7 @@
 
     <TextView
         android:id="@+id/text"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="What are your current goals?"
@@ -18,6 +19,61 @@
         >
 
     </TextView>
+
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
+    android:hint="Lose Weight/Fat"
+    android:textColor="@color/white"
+    android:textColorHint="@color/white"
+    android:textSize="15sp"
+    android:backgroundTint="@color/black"
+    android:padding="10dp"
+    android:id="@+id/loseWeightBtn"
+    android:layout_below="@id/text">
+</Button>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Build Muscle"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="15sp"
+        android:backgroundTint="@color/black"
+        android:padding="10dp"
+        android:id="@+id/BuildMuscleBtn"
+        android:layout_below="@id/loseWeightBtn">
+    </Button>
+
+<Button
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="10dp"
+android:hint="Gain Weight"
+android:textColor="@color/white"
+android:textColorHint="@color/white"
+android:textSize="15sp"
+android:backgroundTint="@color/black"
+android:padding="10dp"
+android:id="@+id/GainWeightBtn"
+android:layout_below="@id/BuildMuscleBtn">
+</Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Increase Stamina"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="15sp"
+        android:backgroundTint="@color/black"
+        android:padding="10dp"
+        android:id="@+id/IncreaseStaminaBtn"
+        android:layout_below="@id/GainWeightBtn">
+    </Button>
 
 
     <ImageView
