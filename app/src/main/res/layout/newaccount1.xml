@@ -61,7 +61,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="15dp"
         android:hint="Male"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -100,7 +100,7 @@
         android:textColor="@color/black"
         android:text="Next"
         android:layout_below="@id/Female"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         >
 
     </Button>
