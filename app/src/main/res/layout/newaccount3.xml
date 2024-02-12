@@ -1,0 +1,90 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    tools:context=".CreateAccountQuizActivity">
+
+    <TextView
+        android:id="@+id/text"
+        android:paddingLeft="3dp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter your date of birth"
+        android:layout_below="@+id/logo"
+        android:textSize="40dp"
+        android:layout_centerHorizontal="true"
+        >
+
+    </TextView>
+
+    <EditText
+        android:layout_marginTop="30dp"
+        android:id="@+id/month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:gravity="left"
+        android:hint="Month 1-12"
+        >
+    </EditText>
+
+    <EditText
+        android:id="@+id/day"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/month"
+        android:hint="Day"
+        >
+    </EditText>
+
+    <EditText
+        android:id="@+id/year"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/day"
+        android:layout_below="@+id/day"
+        android:hint="Year"
+        >
+    </EditText>
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_marginTop="20dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/baseline_all_inclusive_24" />
+
+
+    <Button
+        android:id="@+id/nextBtnToMainMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:text="Next"
+        android:layout_below="@id/year"
+        android:layout_marginTop="150dp"
+        >
+    </Button>
+
+    <Button
+            android:id="@+id/backBtnToNewAccount2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:text="Back"
+            android:layout_below="@id/nextBtnToMainMenu"
+            android:layout_marginTop="10dp"
+            >
+
+    </Button>
+
+</RelativeLayout>
