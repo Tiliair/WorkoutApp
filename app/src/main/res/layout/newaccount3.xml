@@ -12,20 +12,36 @@
         android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter your date of birth"
+        android:text="Almost Done!"
         android:layout_below="@+id/logo"
-        android:textSize="40dp"
+        android:textSize="30dp"
         android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        >
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/text2"
+        android:paddingLeft="3dp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please enter your date of birth!"
+        android:layout_below="@+id/text"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
         >
 
     </TextView>
 
     <EditText
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:id="@+id/month"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text"
+        android:layout_below="@id/text2"
         android:gravity="left"
         android:hint="Month 1-12"
         >
@@ -70,7 +86,7 @@
         android:textColor="@color/black"
         android:text="Next"
         android:layout_below="@id/year"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="120dp"
         >
     </Button>
 

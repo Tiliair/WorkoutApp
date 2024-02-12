@@ -84,7 +84,7 @@ android:layout_below="@id/BuildMuscleBtn">
         android:textColor="@color/black"
         android:text="Next"
         android:layout_below="@id/IncreaseStaminaBtn"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="150dp"
         >
 
     </Button>

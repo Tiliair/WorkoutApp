@@ -97,7 +97,20 @@
         android:textColor="@color/black"
         android:text="Next"
         android:layout_below="@id/Female"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="100dp"
+        >
+
+    </Button>
+
+    <Button
+        android:id="@+id/backNotWorking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nextBtnToNewAccount2"
+        android:backgroundTint="#373131"
+        android:text="Back"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
         >
 
     </Button>
