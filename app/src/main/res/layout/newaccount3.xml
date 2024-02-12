@@ -36,37 +36,35 @@
 
     </TextView>
 
-    <EditText
-        android:layout_marginTop="40dp"
-        android:id="@+id/month"
+    <Spinner
+        android:layout_marginTop="50dp"
+        android:id="@+id/monthsSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/text2"
-        android:gravity="left"
-        android:hint="Month 1-12"
+        android:spinnerMode="dropdown"
         >
-    </EditText>
 
-    <EditText
-        android:id="@+id/day"
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/daySpinner"
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/month"
-        android:hint="Day"
-        >
-    </EditText>
+        android:layout_below="@id/monthsSpinner"
 
-    <EditText
-        android:id="@+id/year"
+        >
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/yearSpinner"
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@id/day"
-        android:layout_below="@+id/day"
-        android:hint="Year"
+        android:layout_below="@+id/daySpinner"
         >
-    </EditText>
+    </Spinner>
 
 
     <ImageView
@@ -85,7 +83,7 @@
         android:backgroundTint="@color/white"
         android:textColor="@color/black"
         android:text="Next"
-        android:layout_below="@id/year"
+        android:layout_below="@id/yearSpinner"
         android:layout_marginTop="120dp"
         >
     </Button>

@@ -1,7 +1,9 @@
 package com.example.myapplication;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -50,6 +52,12 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
 
     public void changelayout3(){
         setContentView(R.layout.newaccount3);
+
+        Spinner spinner = (Spinner) findViewById(R.id.monthsSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Months, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setPrompt("Month");
 
         Button BACK = (Button) findViewById(R.id.backBtnToNewAccount2);
         BACK.setOnClickListener(new View.OnClickListener() {
