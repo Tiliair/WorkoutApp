@@ -36,19 +36,29 @@
         android:textSize="20dp" />
 
 
-    <EditText
-        android:id="@+id/Height"
+    <TextView
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@+id/weight"
-        android:hint="Height"
-        android:backgroundTint="@color/black"
-        android:padding="20dp"
-        android:textSize="20dp" />
+        android:layout_below="@id/weight"
+        android:paddingLeft="27dp"
+        android:text="Height"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        >
+    </TextView>
+    <Spinner
+        android:layout_marginTop="20dp"
+        android:paddingTop="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="20dp"
+        android:id="@+id/heightSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weight">
+
+    </Spinner>
 
 
     <ImageView
@@ -70,7 +80,7 @@
         android:textColorHint="@color/white"
         android:textSize="15sp"
         android:padding="10dp"
-        android:layout_below="@id/Height">
+        android:layout_below="@id/heightSpinner">
 
     </Button>
 
@@ -98,7 +108,7 @@
         android:textColor="@color/black"
         android:text="Next"
         android:layout_below="@id/Female"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
         >
 
     </Button>
