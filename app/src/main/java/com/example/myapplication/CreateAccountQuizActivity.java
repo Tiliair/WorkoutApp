@@ -38,6 +38,8 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
         Button NEXT = (Button) findViewById(R.id.nextBtnToNewAccount3);
         NEXT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                //make if statement to make sure all fields are filled out, if not - prompt "not all fields are filled out"
+                //if all fields are filled out go next
                 changelayout3();
             }
         });
@@ -53,11 +55,24 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
     public void changelayout3(){
         setContentView(R.layout.newaccount3);
 
-        Spinner spinner = (Spinner) findViewById(R.id.monthsSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Months, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setPrompt("Month");
+        //spinners
+        Spinner monthSpinner = (Spinner) findViewById(R.id.monthsSpinner);
+        ArrayAdapter<CharSequence> monthAdapter = ArrayAdapter.createFromResource(this, R.array.Months, android.R.layout.simple_spinner_item);
+        monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        monthSpinner.setAdapter(monthAdapter);
+        monthSpinner.setPrompt("Month");
+        //
+        Spinner daySpinner = (Spinner) findViewById(R.id.daySpinner);
+        ArrayAdapter<CharSequence> dayAdapter = ArrayAdapter.createFromResource(this, R.array.Days, android.R.layout.simple_spinner_item);
+        dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        daySpinner.setAdapter(dayAdapter);
+        daySpinner.setPrompt("Day");
+        //
+        Spinner yearSpinner = (Spinner) findViewById(R.id.yearSpinner);
+        ArrayAdapter<CharSequence> yearAdapter = ArrayAdapter.createFromResource(this, R.array.years, android.R.layout.simple_spinner_item);
+        dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        yearSpinner.setAdapter(yearAdapter);
+        yearSpinner.setPrompt("Year");
 
         Button BACK = (Button) findViewById(R.id.backBtnToNewAccount2);
         BACK.setOnClickListener(new View.OnClickListener() {
