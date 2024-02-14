@@ -20,6 +20,20 @@
 
     </TextView>
 
+    <TextView
+        android:id="@+id/text2"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="These can always be changed in your profile"
+        android:layout_below="@+id/text"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        >
+
+    </TextView>
+
 <Button
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -31,7 +45,7 @@
     android:backgroundTint="@color/black"
     android:padding="10dp"
     android:id="@+id/loseWeightBtn"
-    android:layout_below="@id/text"
+    android:layout_below="@id/text2"
     >
 </Button>
     <Button
@@ -84,7 +98,7 @@ android:layout_below="@id/BuildMuscleBtn">
         android:textColor="@color/black"
         android:text="Next"
         android:layout_below="@id/IncreaseStaminaBtn"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="120dp"
         >
 
     </Button>

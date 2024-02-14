@@ -36,6 +36,42 @@
 
     </TextView>
 
+    <TextView
+        android:id="@+id/monthText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Month"
+        android:layout_below="@+id/text2"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="27dp"
+        android:textSize="20dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/dayText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Day"
+        android:layout_below="@+id/monthsSpinner"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="27dp"
+        android:textSize="20dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/yearText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Year"
+        android:layout_below="@+id/daySpinner"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="27dp"
+        android:textSize="20dp">
+    </TextView>
+
     <Spinner
         android:paddingTop="20dp"
         android:paddingLeft="20dp"

@@ -19,6 +19,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_PASSWORD = "password";
     private static final String COLUMN_HEIGHT = "height";
     private static final String COLUMN_WEIGHT = "weight";
+    private static final String COLUMN_SEX = "sex";
+
+    //get birthday
+    //check age based on birthday
+    //and put birthday into Column
+    private static final String COLUMN_AGE = "age";
+
+    //get goal as goal1, goal2, goal3 ect
+    //these will be assigned as seen
+    //goal1 = lose weight, goal2 = build muscle ect
+    private static final String COLUMN_GOAL = "goal";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -30,7 +41,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_USERNAME + " TEXT PRIMARY KEY, " +
                 COLUMN_PASSWORD + " TEXT, " +
                 COLUMN_HEIGHT + " REAL, " +
-                COLUMN_WEIGHT + " REAL)";
+                COLUMN_WEIGHT + " REAL, " +
+                COLUMN_AGE + " REAL, " +
+                COLUMN_SEX + " REAL, " +
+                COLUMN_GOAL + " REAL)";
         db.execSQL(createTableQuery);
     }
 
