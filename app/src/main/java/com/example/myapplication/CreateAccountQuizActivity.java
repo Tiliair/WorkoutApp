@@ -8,33 +8,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class CreateAccountQuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.newaccount1);
-        EditText Weight = (EditText) findViewById(R.id.weight);
-
-        Spinner heightSpinner = findViewById(R.id.heightSpinner);
-        ArrayAdapter<CharSequence> heightAdapter = ArrayAdapter.createFromResource(this, R.array.Heights, android.R.layout.simple_spinner_item);
-        heightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        heightSpinner.setAdapter(heightAdapter);
-
-        Button NEXT = findViewById(R.id.nextBtnToNewAccount2);
-
-        NEXT.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (TextUtils.isEmpty(Weight.getText())) {
-                    System.out.println("please enter a weight");
-                }
-                else if(heightSpinner != null && heightSpinner.getSelectedItem() !=null ) {
-                    System.out.println("please select a height");
-                }else
-                    changelayout2();
-            }
-        });
+        changelayout1();
     }
 
     public void changelayout1() {
@@ -48,17 +29,19 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
         Button NEXT = findViewById(R.id.nextBtnToNewAccount2);
         NEXT.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if ( ( Weight.getText().toString().trim().equals("")) ){
-                    System.out.println("please enter a weight");
+                if (TextUtils.isEmpty(Weight.getText())) {
+                    Toast.makeText(getApplicationContext(), "please enter a weight", Toast.LENGTH_SHORT).show();
                     return;
 
-                } else if (heightSpinner != null && heightSpinner.getSelectedItem() != null) {
-                    System.out.println("please select a height");
+                } else if (heightSpinner.getCount() == 0) {
+                    Toast.makeText(getApplicationContext(), "please select a height", Toast.LENGTH_SHORT).show();
                     return;
 
                 }
                 changelayout2();
-            };
+            }
+
+            ;
         });
     }
 
