@@ -11,7 +11,7 @@
         android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="What are your current goals?"
+        android:text="What is your current goal?"
         android:layout_below="@+id/logo"
         android:textSize="25dp"
         android:textAlignment="center"
@@ -25,7 +25,7 @@
         android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="These can always be changed in your profile"
+        android:text="This can always be changed in your profile!"
         android:layout_below="@+id/text"
         android:textSize="20dp"
         android:textAlignment="center"
@@ -34,61 +34,74 @@
 
     </TextView>
 
-<Button
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text2"
+        >
+
+<RadioButton
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="40dp"
-    android:hint="Lose Weight/Fat"
-    android:textColor="@color/white"
-    android:textColorHint="@color/white"
+    android:hint="Build Muscle while losing weight"
+    android:textColor="@color/black"
+    android:textColorHint="@color/black"
     android:textSize="15sp"
     android:backgroundTint="@color/black"
     android:padding="10dp"
-    android:id="@+id/loseWeightBtn"
+    android:id="@+id/BuildMuscleWhileLosingWeightBtn"
+    android:onClick="checkButton"
     android:layout_below="@id/text2"
     >
-</Button>
-    <Button
+</RadioButton>
+    <RadioButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Build Muscle"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:hint="Build Muscle while gaining weight"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="15sp"
         android:backgroundTint="@color/black"
         android:padding="10dp"
-        android:id="@+id/BuildMuscleBtn"
-        android:layout_below="@id/loseWeightBtn">
-    </Button>
+        android:id="@+id/BuildMuscleWhileGainingWeightBtn"
+        android:onClick="checkButton"
+        android:layout_below="@id/BuildMuscleWhileLosingWeightBtn">
+    </RadioButton>
 
-<Button
+<RadioButton
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
 android:layout_marginTop="10dp"
-android:hint="Gain Weight"
-android:textColor="@color/white"
-android:textColorHint="@color/white"
+android:hint="Lose Weight/Fat"
+android:textColor="@color/black"
+android:textColorHint="@color/black"
 android:textSize="15sp"
 android:backgroundTint="@color/black"
 android:padding="10dp"
-android:id="@+id/GainWeightBtn"
-android:layout_below="@id/BuildMuscleBtn">
-</Button>
+android:id="@+id/loseWeightBtn"
+android:onClick="checkButton"
+android:layout_below="@id/BuildMuscleWhileGainingWeightBtn">
+</RadioButton>
 
-    <Button
+    <RadioButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Increase Stamina"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="15sp"
         android:backgroundTint="@color/black"
         android:padding="10dp"
         android:id="@+id/IncreaseStaminaBtn"
-        android:layout_below="@id/GainWeightBtn">
-    </Button>
+        android:onClick="checkButton"
+        android:layout_below="@id/loseWeightBtn">
+    </RadioButton>
+
+    </RadioGroup>
 
     <Button
         android:id="@+id/nextBtnToNewAccount3"
@@ -96,9 +109,9 @@ android:layout_below="@id/BuildMuscleBtn">
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:textColor="@color/black"
+        android:layout_below="@+id/radioGroup1"
         android:text="Next"
-        android:layout_below="@id/IncreaseStaminaBtn"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="100dp"
         >
 
     </Button>
