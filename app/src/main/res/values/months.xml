@@ -1,7 +1,7 @@
 <resources>
     <string-array name="Months">
         <item>January</item>
-        <item>Febuary</item>
+        <item>February</item>
         <item>March</item>
         <item>April</item>
         <item>May</item>
@@ -10,7 +10,7 @@
         <item>August</item>
         <item>September</item>
         <item>October</item>
-        <item>Novemeber</item>
+        <item>November</item>
         <item>December</item>
     </string-array>
 </resources>

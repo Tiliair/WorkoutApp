@@ -1,15 +1,10 @@
 package com.example.myapplication;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Bundle;
-import android.widget.EditText;
-import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.material.button.MaterialButton;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "Accounts.db";
@@ -19,16 +14,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_PASSWORD = "password";
     private static final String COLUMN_HEIGHT = "height";
     private static final String COLUMN_WEIGHT = "weight";
-    private static final String COLUMN_SEX = "sex";
-
-    //get birthday
-    //check age based on birthday
-    //and put birthday into Column
     private static final String COLUMN_AGE = "age";
-
-    //get goal as goal1, goal2, goal3 ect
-    //these will be assigned as seen
-    //goal1 = lose weight, goal2 = build muscle ect
+    private static final String COLUMN_SEX = "sex";
     private static final String COLUMN_GOAL = "goal";
 
     public DatabaseHelper(Context context) {
@@ -43,7 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_HEIGHT + " REAL, " +
                 COLUMN_WEIGHT + " REAL, " +
                 COLUMN_AGE + " REAL, " +
-                COLUMN_SEX + " REAL, " +
+                COLUMN_SEX + " TEXT, " +
                 COLUMN_GOAL + " REAL)";
         db.execSQL(createTableQuery);
     }
@@ -59,6 +46,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_USERNAME, username);
         contentValues.put(COLUMN_PASSWORD, password);
+        long result = db.insert(TABLE_NAME, null, contentValues);
+        return result != -1;
+    }
+
+    public boolean checkPassword(String username, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_PASSWORD + " FROM " + TABLE_NAME + " WHERE " + COLUMN_USERNAME + "=?", new String[]{username});
+
+        if (cursor != null && cursor.moveToFirst()) {
+            int passwordIndex = cursor.getColumnIndex(COLUMN_PASSWORD);
+            if (passwordIndex != -1) {
+                String storedPassword = cursor.getString(passwordIndex);
+                cursor.close();
+                return password.equals(storedPassword);
+            } else {
+                // Handle case where COLUMN_PASSWORD is not found
+                cursor.close();
+                return false;
+            }
+        } else {
+            // Handle case where username is not found
+            if (cursor != null) {
+                cursor.close();
+            }
+            return false;
+        }
+    }
+
+
+    public boolean insertAccountInfo(float height, float weight, float age, String sex, String goal) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_HEIGHT, height);
+        contentValues.put(COLUMN_WEIGHT, weight);
+        contentValues.put(COLUMN_AGE, age);
+        contentValues.put(COLUMN_SEX, sex);
+        contentValues.put(COLUMN_GOAL, goal);
         long result = db.insert(TABLE_NAME, null, contentValues);
         return result != -1;
     }

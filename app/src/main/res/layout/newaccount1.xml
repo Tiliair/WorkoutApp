@@ -71,14 +71,13 @@
         android:src="@drawable/baseline_all_inclusive_24" />
 
     <RadioGroup
-        android:id="@+id/radioGroup2"
+        android:id="@+id/radioGroup0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/heightSpinner"
         >
 
     <RadioButton
-        android:onClick="checkButton"
         android:id="@+id/Male"
         android:backgroundTint="@color/black"
         android:layout_width="match_parent"
@@ -94,7 +93,6 @@
     </RadioButton>
 
     <RadioButton
-        android:onClick="checkButton"
         android:id="@+id/Female"
         android:backgroundTint="@color/black"
         android:layout_width="match_parent"
@@ -118,7 +116,7 @@
         android:backgroundTint="@color/white"
         android:textColor="@color/black"
         android:text="Next"
-        android:layout_below="@id/radioGroup2"
+        android:layout_below="@id/radioGroup0"
         android:layout_marginTop="80dp"
         >
 

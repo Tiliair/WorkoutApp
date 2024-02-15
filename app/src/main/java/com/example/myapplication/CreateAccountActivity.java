@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import android.widget.EditText;
+
 public class CreateAccountActivity extends AppCompatActivity {
 
     private EditText username;
@@ -18,6 +19,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_account);
 
+        // Initialize DatabaseHelper
         databaseHelper = new DatabaseHelper(this);
 
         // Initialize views

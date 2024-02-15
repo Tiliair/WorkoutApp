@@ -52,7 +52,6 @@
     android:backgroundTint="@color/black"
     android:padding="10dp"
     android:id="@+id/BuildMuscleWhileLosingWeightBtn"
-    android:onClick="checkButton"
     android:layout_below="@id/text2"
     >
 </RadioButton>
@@ -67,7 +66,6 @@
         android:backgroundTint="@color/black"
         android:padding="10dp"
         android:id="@+id/BuildMuscleWhileGainingWeightBtn"
-        android:onClick="checkButton"
         android:layout_below="@id/BuildMuscleWhileLosingWeightBtn">
     </RadioButton>
 
@@ -82,7 +80,6 @@ android:textSize="15sp"
 android:backgroundTint="@color/black"
 android:padding="10dp"
 android:id="@+id/loseWeightBtn"
-android:onClick="checkButton"
 android:layout_below="@id/BuildMuscleWhileGainingWeightBtn">
 </RadioButton>
 
@@ -97,7 +94,6 @@ android:layout_below="@id/BuildMuscleWhileGainingWeightBtn">
         android:backgroundTint="@color/black"
         android:padding="10dp"
         android:id="@+id/IncreaseStaminaBtn"
-        android:onClick="checkButton"
         android:layout_below="@id/loseWeightBtn">
     </RadioButton>
 
@@ -111,7 +107,7 @@ android:layout_below="@id/BuildMuscleWhileGainingWeightBtn">
         android:textColor="@color/black"
         android:layout_below="@+id/radioGroup1"
         android:text="Next"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="150dp"
         >
 
     </Button>
