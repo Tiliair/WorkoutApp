@@ -27,11 +27,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createTableQuery = "CREATE TABLE " + TABLE_NAME + " (" +
                 COLUMN_USERNAME + " TEXT PRIMARY KEY, " +
                 COLUMN_PASSWORD + " TEXT, " +
-                COLUMN_HEIGHT + " REAL, " +
-                COLUMN_WEIGHT + " REAL, " +
-                COLUMN_AGE + " REAL, " +
+                COLUMN_HEIGHT + " INTEGER, " +
+                COLUMN_WEIGHT + " INTEGER, " +
+                COLUMN_AGE + " INTEGER, " +
                 COLUMN_SEX + " TEXT, " +
-                COLUMN_GOAL + " REAL)";
+                COLUMN_GOAL + " INTEGER)";
         db.execSQL(createTableQuery);
     }
 
@@ -75,7 +75,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean insertAccountInfo(float height, float weight, float age, String sex, String goal) {
+    public boolean insertAccountInfo(int height, int weight, int age, String sex, int goal) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_HEIGHT, height);

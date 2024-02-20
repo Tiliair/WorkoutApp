@@ -107,7 +107,7 @@ android:layout_below="@id/BuildMuscleWhileGainingWeightBtn">
         android:textColor="@color/black"
         android:layout_below="@+id/radioGroup1"
         android:text="Next"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="110dp"
         >
 
     </Button>

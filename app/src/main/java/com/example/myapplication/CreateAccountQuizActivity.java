@@ -36,8 +36,17 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
         radioGroup = findViewById(R.id.radioGroup0);
         weight = findViewById(R.id.weight);
         heightSpinner = findViewById(R.id.heightSpinner);
-        ArrayAdapter<CharSequence> heightAdapter = ArrayAdapter.createFromResource(this, R.array.Heights, android.R.layout.simple_spinner_item);
+
+        // Getting the array from resources
+        String[] heightsArray = getResources().getStringArray(R.array.Heights);
+        // Adding a title to the heights array
+        String[] heightsWithTitle = new String[heightsArray.length + 1];
+        heightsWithTitle[0] = "Height";
+        System.arraycopy(heightsArray, 0, heightsWithTitle, 1, heightsArray.length);
+        // Creating an ArrayAdapter with the array including the title
+        ArrayAdapter<String> heightAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, heightsWithTitle);
         heightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Setting the adapter for the height spinner
         heightSpinner.setAdapter(heightAdapter);
 
         Button nextBtn = findViewById(R.id.nextBtnToNewAccount2);
@@ -156,28 +165,28 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
                     return;
                 }
 
-                //get age
-                float age = calculateAge(selectedMonth, selectedDay, selectedYear);
-
-                // Get other selected data
-                float height = Float.parseFloat(heightSpinner.getSelectedItem().toString());
-                float weightValue = Float.parseFloat(weight.getText().toString());
+                //get data
+                int age = calculateAge(selectedMonth, selectedDay, selectedYear);
+                int height = Integer.parseInt((heightSpinner.getSelectedItem().toString()));
+                int weightValue = Integer.parseInt((weight.getText().toString()));
                 String sex = selectedSex;
                 int goal = Integer.parseInt(selectedGoal);
 
                 // Insert data into the database
-                boolean inserted = new DatabaseHelper(CreateAccountQuizActivity.this).insertAccountInfo(height, weightValue, age, sex, String.valueOf(goal));
+                boolean inserted = new DatabaseHelper(CreateAccountQuizActivity.this).insertAccountInfo(height, weightValue, age, sex, goal);
 
+                // Check if data was inserted successfully
                 if (inserted) {
+                    // Start the MainMenuActivity
                     startActivity(new Intent(CreateAccountQuizActivity.this, MainMenuActivity.class));
-                    finish(); // Finish the current activity to prevent going back to it on pressing back
+                    finish();
+
                 } else {
                     Toast.makeText(CreateAccountQuizActivity.this, "Failed to create account. Please try again.", Toast.LENGTH_SHORT).show();
-                    // Optionally, you can keep the user on the current activity to try again
-                    // You can add some logic here to reset the form or keep the entered data
                 }
             }
         });
+
 
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -186,9 +195,8 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
         });
     }
 
-    // Method to calculate age from selected birth date
-    private float calculateAge(String selectedMonth, String selectedDay, String selectedYear) {
-// Get current date
+    private int calculateAge(String selectedMonth, String selectedDay, String selectedYear) {
+        // Get current date
         LocalDate currentDate = LocalDate.now();
 
         // Parse selected date
@@ -205,9 +213,7 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
             years--;
         }
 
-        // Calculate fractional age
-        float fractionalAge = years + (float) months / 12 + (float) days / 365;
-
-        return fractionalAge;
+        // Return only the integer part of the age
+        return years;
     }
 }

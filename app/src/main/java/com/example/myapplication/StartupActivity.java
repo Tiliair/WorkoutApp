@@ -14,6 +14,7 @@ public class StartupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.startup);
 
+
         Button CREATE_ACCOUNT = (Button) findViewById(R.id.createAccount_btn);
         Button LOGIN = (Button) findViewById(R.id.login_btn);
 
