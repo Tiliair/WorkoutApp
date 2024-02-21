@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background">
+
+    <GridLayout
+        android:id="@+id/grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="2"
+        android:rowCount="4"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="2"
+            android:textAlignment="center"
+            android:text="Workouts"
+            android:textSize="40dp"
+            android:layout_marginBottom="80dp"/>
+
+        <Button
+            android:id="@+id/btnChest"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:backgroundTint="@color/black"
+            android:text="Chest Workout"
+            android:layout_marginBottom="32dp"
+            android:onClick="onButtonClick"/>
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:backgroundTint="@color/black"
+            android:text="Back Workout"
+            android:layout_marginBottom="32dp"
+            android:onClick="onButtonClick"/>
+
+        <Button
+            android:id="@+id/btnArms"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:backgroundTint="@color/black"
+            android:text="Arms Workout"
+            android:layout_marginBottom="32dp"
+            android:onClick="onButtonClick"/>
+
+        <Button
+            android:id="@+id/btnCore"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:backgroundTint="@color/black"
+            android:text="Core Workout"
+            android:layout_marginBottom="32dp"
+            android:onClick="onButtonClick"/>
+
+        <Button
+            android:id="@+id/btnLegs"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:backgroundTint="@color/black"
+            android:text="Legs Workout"
+            android:layout_marginBottom="32dp"
+            android:onClick="onButtonClick"/>
+
+        <Button
+            android:id="@+id/btnShoulders"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill_horizontal"
+            android:backgroundTint="@color/black"
+            android:text="Shoulders Workout"
+            android:onClick="onButtonClick"/>
+
+    </GridLayout>
+
+    <!-- Include the tabs layout at the bottom -->
+    <include layout="@layout/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

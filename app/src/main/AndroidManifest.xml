@@ -35,6 +35,10 @@
         </activity>
         <activity android:name="MainMenuActivity" >
         </activity>
+        <activity android:name=".WorkoutsActivity" >
+        </activity>
+        <activity android:name=".ViewPageAdapter" >
+        </activity>
     </application>
 
 </manifest>
