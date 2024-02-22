@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
- xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,9 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center
-"       android:orientation="vertical"
-        >
+        android:gravity="center"
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="160dp"
@@ -25,32 +24,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Create Account"
+            android:text="Create Account"
             android:textColor="@color/white"
-            android:textColorHint="@color/white"
             android:textSize="20sp"
             android:backgroundTint="@color/black"
             android:padding="10dp"
-            android:id="@+id/createAccount_btn"
-            android:onClick="CREATE_ACCOUNT"
-            />
+            android:id="@+id/createAccount_btn" />
 
-     <Button
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Login"
+            android:text="Login"
             android:textColor="@color/white"
-            android:textColorHint="@color/white"
             android:textSize="20sp"
             android:backgroundTint="@color/black"
             android:padding="10dp"
-            android:id="@+id/login_btn"
-            android:onClick="LOGIN"
-         />
-
+            android:id="@+id/login_btn" />
     </LinearLayout>
-
-
 </RelativeLayout>
-
