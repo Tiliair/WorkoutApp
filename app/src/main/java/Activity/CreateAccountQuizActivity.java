@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myapplication.DatabaseHelper;
+import com.example.myapplication.R;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
