@@ -9,10 +9,11 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"/>
 
     <com.google.android.material.tabs.TabLayout
+        android:contentDescription="a"
         android:id="@+id/tabLayout"
         app:tabTextColor="@color/white"
         app:tabSelectedTextColor="@color/white"
@@ -20,35 +21,6 @@
         app:tabIconTint="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/transparent">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/baseline_cottage_24"
-            android:text="Home" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabDiet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/baseline_fastfood_24"
-            android:text="Diet" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabWorkouts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/baseline_directions_run_24"
-            android:text="Workouts" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/baseline_insert_emoticon_24"
-            android:text="Profile" />
-    </com.google.android.material.tabs.TabLayout>
+        android:background="@color/transparent"/>
 
 </LinearLayout>

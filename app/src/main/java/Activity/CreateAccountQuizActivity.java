@@ -32,8 +32,8 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
      * On Create is when the user first makes the account this form is called
      *
      * @param savedInstanceState If the activity is being re-initialized after
-     *     previously being shut down then this Bundle contains the data it most
-     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *                           previously being shut down then this Bundle contains the data it most
+     *                           recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -184,6 +184,12 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
         Button backButton = findViewById(R.id.backBtnToNewAccount2);
         Button nextButton = findViewById(R.id.nextBtnToMainMenu);
 
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                changeLayout2();
+            }
+        });
+
         nextButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String selectedMonth = monthSpinner.getSelectedItem().toString();
@@ -215,13 +221,6 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(CreateAccountQuizActivity.this, "Failed to create account. Please try again.", Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-
-
-        backButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                changeLayout2();
             }
         });
     }

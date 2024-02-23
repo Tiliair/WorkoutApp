@@ -11,29 +11,29 @@ import Fragments.WorkoutFragment;
 
 public class ViewPageAdapter extends FragmentStateAdapter {
 
-    public ViewPageAdapter(@NonNull FragmentActivity fragmentActivity) {
-        super(fragmentActivity);
-    }
-
-    @NonNull
-    @Override
-    public Fragment createFragment(int position) {
-        switch (position) {
-            case 0:
-                return new HomeFragment();
-            case 1:
-                return new DietFragment();
-            case 2:
-                return new WorkoutFragment();
-            case 3:
-                return new ProfileFragment();
+        public ViewPageAdapter(@NonNull FragmentActivity fragmentActivity) {
+            super(fragmentActivity);
         }
-        throw new IllegalArgumentException("Invalid position: " + position);
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            switch (position) {
+                case 0:
+                    return new HomeFragment();
+                case 1:
+                    return new DietFragment();
+                case 2:
+                    return new WorkoutFragment();
+                case 3:
+                    return new ProfileFragment();
+            }
+            throw new IllegalArgumentException("Invalid position: " + position);
+        }
+
+        @Override
+        public int getItemCount() {
+            return 4;
+        }
     }
 
-
-    @Override
-    public int getItemCount() {
-        return 4;
-    }
-}
