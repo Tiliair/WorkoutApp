@@ -28,12 +28,23 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
     String selectedSex;
     String selectedGoal;
 
+    /**
+     * On Create is when the user first makes the account this form is called
+     *
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         changeLayout1();
     }
 
+    /**
+     * First layout in the CreateAccountQuizActivity
+     * the user has no ability to go backwards but can go forward to the next form if all forms are filled out
+     */
     public void changeLayout1() {
         setContentView(R.layout.newaccount1);
         radioGroup = findViewById(R.id.radioGroup0);
@@ -42,13 +53,16 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
 
         // Getting the array from resources
         String[] heightsArray = getResources().getStringArray(R.array.Heights);
+
         // Adding a title to the heights array
         String[] heightsWithTitle = new String[heightsArray.length + 1];
         heightsWithTitle[0] = "Height";
         System.arraycopy(heightsArray, 0, heightsWithTitle, 1, heightsArray.length);
+
         // Creating an ArrayAdapter with the array including the title
         ArrayAdapter<String> heightAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, heightsWithTitle);
         heightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         // Setting the adapter for the height spinner
         heightSpinner.setAdapter(heightAdapter);
 
@@ -76,6 +90,11 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Changed to layout 2 with ability to go back to layout 1 or next to layout 3
+     * not able to change layout forward unless filling out the form
+     * Radio group resets every time the form is seen again for the first time
+     */
     public void changeLayout2() {
         setContentView(R.layout.newaccount2);
         Button buttonBack = findViewById(R.id.backBtnToNewAccount1);
@@ -108,9 +127,16 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Changed to layout 3 with ability to go back to layout 2 or next to main menu IF everything is filled out and it successfully put your
+     * data into the database
+     * not able to change layout forward unless filling out the form
+     * Make it so every time the user first enters this page the spinners reset to no input
+     */
     public void changeLayout3() {
         setContentView(R.layout.newaccount3);
 
+        //month spinner
         Spinner monthSpinner = findViewById(R.id.monthsSpinner);
         ArrayAdapter<CharSequence> monthAdapter = ArrayAdapter.createFromResource(this, R.array.Months, android.R.layout.simple_spinner_item);
         monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -125,6 +151,7 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
         monthAdapterWithTitle.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         monthSpinner.setAdapter(monthAdapterWithTitle);
 
+        //day spinner
         Spinner daySpinner = findViewById(R.id.daySpinner);
         ArrayAdapter<CharSequence> dayAdapter = ArrayAdapter.createFromResource(this, R.array.Days, android.R.layout.simple_spinner_item);
         dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -139,6 +166,7 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
         dayAdapterWithTitle.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         daySpinner.setAdapter(dayAdapterWithTitle);
 
+        //year spinner
         Spinner yearSpinner = findViewById(R.id.yearSpinner);
         ArrayAdapter<CharSequence> yearAdapter = ArrayAdapter.createFromResource(this, R.array.years, android.R.layout.simple_spinner_item);
         yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -198,6 +226,13 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Gets birthday and calculates age
+     * @param selectedMonth gets month from input user
+     * @param selectedDay gets day from user
+     * @param selectedYear gets year from user
+     * @return calculated age based on current date and birthday input
+     */
     private int calculateAge(String selectedMonth, String selectedDay, String selectedYear) {
         // Get current date
         LocalDate currentDate = LocalDate.now();
