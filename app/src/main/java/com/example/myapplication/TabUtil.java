@@ -1,4 +1,4 @@
-package com.example.myapplication;// TabUtil.java
+package com.example.myapplication;
 
 import android.app.Activity;
 import androidx.fragment.app.Fragment;
@@ -10,12 +10,17 @@ import java.util.List;
 
 public class TabUtil {
 
-    public static void setupTabs(Activity activity, ViewPager2 viewPager, TabLayout tabLayout, List<Fragment> fragments, List<String> tabTitles) {
+    public static void setupTabs(Activity activity, ViewPager2 viewPager, TabLayout tabLayout, List<Fragment> fragments, List<String> tabTitles, int[] tabIcons) {
         ViewPageAdapter viewPageAdapter = new ViewPageAdapter((FragmentActivity) activity);
         viewPager.setAdapter(viewPageAdapter);
 
         new TabLayoutMediator(tabLayout, viewPager,
-                (tab, position) -> tab.setText(tabTitles.get(position))
+                (tab, position) -> {
+                    tab.setText(tabTitles.get(position));
+                    if (tabIcons != null && position < tabIcons.length) {
+                        tab.setIcon(tabIcons[position]);
+                    }
+                }
         ).attach();
     }
 }

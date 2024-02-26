@@ -36,7 +36,13 @@ public class MainMenuActivity extends AppCompatActivity {
 
         List<String> tabTitles = Arrays.asList("Home", "Diet", "Workouts", "Profile");
 
-        TabUtil.setupTabs(this, viewPager, tabLayout, fragments, tabTitles);
+        int[] tabIcons = {
+                R.drawable.baseline_cottage_24,
+                R.drawable.baseline_fastfood_24,
+                R.drawable.baseline_directions_run_24,
+                R.drawable.baseline_insert_emoticon_24
+        };
+
+        TabUtil.setupTabs(this, viewPager, tabLayout, fragments, tabTitles, tabIcons);
     }
 }
-

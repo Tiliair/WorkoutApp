@@ -22,8 +22,16 @@ public class TabsActivity extends AppCompatActivity {
         ViewPageAdapter viewPageAdapter = new ViewPageAdapter(this);
         viewPager.setAdapter(viewPageAdapter);
 
+        int[] tabIcons = {
+                R.drawable.baseline_cottage_24,
+                R.drawable.baseline_fastfood_24,
+                R.drawable.baseline_directions_run_24,
+                R.drawable.baseline_insert_emoticon_24
+        };
+
         new TabLayoutMediator(tabLayout, viewPager,
                 (tab, position) -> {
+                    // Set the text
                     switch (position) {
                         case 0:
                             tab.setText("Home");
@@ -38,6 +46,9 @@ public class TabsActivity extends AppCompatActivity {
                             tab.setText("Profile");
                             break;
                     }
+
+                    // Set the icon
+                    tab.setIcon(tabIcons[position]);
                 }
         ).attach();
     }
