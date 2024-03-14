@@ -43,7 +43,7 @@ public class TabsActivity extends AppCompatActivity {
                             tab.setText("Workouts");
                             break;
                         case 3:
-                            tab.setText("Profile");
+                            tab.setText("Settings");
                             break;
                     }
 
