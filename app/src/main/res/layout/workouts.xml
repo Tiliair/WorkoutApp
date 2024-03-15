@@ -24,11 +24,110 @@
         android:gravity="center"
         />
 
-    <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <Button
+        android:layout_marginTop="25dp"
+        android:id="@+id/BicepBTN"
+        android:layout_centerHorizontal="true"
+        android:layout_width="400dp"
+        android:layout_height="130dp"
+        android:layout_below="@id/SettingsTxt"
+        android:backgroundTint="@color/black"
+        android:text="Bicep Workouts"
 
-    </ImageButton>
+        >
+
+    </Button>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/TricepsBTN"
+        android:layout_centerHorizontal="true"
+        android:layout_width="400dp"
+        android:layout_height="130dp"
+        android:layout_below="@id/BicepBTN"
+        android:backgroundTint="@color/black"
+        android:text="Tricep Workouts"
+        >
+
+    </Button>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/LegsBTN"
+        android:layout_centerHorizontal="true"
+        android:layout_width="400dp"
+        android:layout_height="130dp"
+        android:layout_below="@id/TricepsBTN"
+        android:backgroundTint="@color/black"
+        android:text="Leg Workouts"
+        >
+
+    </Button>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/CoreBTN"
+        android:layout_centerHorizontal="true"
+        android:layout_width="400dp"
+        android:layout_height="130dp"
+        android:layout_below="@id/LegsBTN"
+        android:backgroundTint="@color/black"
+        android:text="Core Workouts"
+        >
+
+    </Button>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/BackBTN"
+        android:layout_centerHorizontal="true"
+        android:layout_width="400dp"
+        android:layout_height="130dp"
+        android:layout_below="@id/CoreBTN"
+        android:backgroundTint="@color/black"
+        android:text="Back Workouts"
+        >
+
+    </Button>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/ShoulderBTN"
+        android:layout_centerHorizontal="true"
+        android:layout_width="400dp"
+        android:layout_height="130dp"
+        android:layout_below="@id/BackBTN"
+        android:backgroundTint="@color/black"
+        android:text="Shoulder Workouts"
+        >
+
+    </Button>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/ChestBTN"
+        android:layout_centerHorizontal="true"
+        android:layout_width="400dp"
+        android:layout_height="130dp"
+        android:layout_below="@id/ShoulderBTN"
+        android:backgroundTint="@color/black"
+        android:text="Chest Workouts"
+        >
+
+    </Button>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/GlutesBTN"
+        android:layout_centerHorizontal="true"
+        android:layout_width="400dp"
+        android:layout_height="130dp"
+        android:layout_below="@id/ChestBTN"
+        android:backgroundTint="@color/black"
+        android:text="Glute Workouts"
+        >
+
+    </Button>
 
     <include layout="@layout/tabs"
         />
