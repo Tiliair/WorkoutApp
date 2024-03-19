@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import Fragments.DietFragment;
 import Fragments.HomeFragment;
-import Fragments.ProfileFragment;
+import Fragments.SettingFragment;
 import Fragments.WorkoutFragment;
 
 public class ViewPageAdapter extends FragmentStateAdapter {
@@ -26,7 +26,7 @@ public class ViewPageAdapter extends FragmentStateAdapter {
                 case 2:
                     return new WorkoutFragment();
                 case 3:
-                    return new ProfileFragment();
+                    return new SettingFragment();
             }
             throw new IllegalArgumentException("Invalid position: " + position);
         }

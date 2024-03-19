@@ -14,7 +14,7 @@ import java.util.List;
 
 import Fragments.DietFragment;
 import Fragments.HomeFragment;
-import Fragments.ProfileFragment;
+import Fragments.SettingFragment;
 import Fragments.WorkoutFragment;
 
 public class MainMenuActivity extends AppCompatActivity {
@@ -31,7 +31,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 new HomeFragment(),
                 new DietFragment(),
                 new WorkoutFragment(),
-                new ProfileFragment()
+                new SettingFragment()
         );
 
         List<String> tabTitles = Arrays.asList("Home", "Diet", "Workouts", "Profile");

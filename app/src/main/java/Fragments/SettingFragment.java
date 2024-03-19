@@ -10,9 +10,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
 
-public class ProfileFragment extends Fragment {
+public class SettingFragment extends Fragment {
 
-    public ProfileFragment() {
+    public SettingFragment() {
         // Required empty public constructor
     }
 
