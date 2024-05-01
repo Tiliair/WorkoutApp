@@ -44,6 +44,7 @@ public class WorkoutFragment extends Fragment implements View.OnClickListener {
         ChestBTN.setOnClickListener(this);
         GluteBTN.setOnClickListener(this);
 
+
         return rootView;
     }
 
