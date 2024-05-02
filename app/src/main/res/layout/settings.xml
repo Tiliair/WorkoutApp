@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/login_background"
-    tools:context="Activity.SettingsActivity"
     >
 
     <TextView
