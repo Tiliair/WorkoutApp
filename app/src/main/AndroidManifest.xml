@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    >
+    package="com.example.myapplication">
+
+    <uses-permission android:name="android.permission.INTERNET" >
+
+    </uses-permission>
 
     <application
         android:allowBackup="true"
@@ -14,6 +18,23 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
 
+        <!-- Add Google Services Plugin Configuration -->
+        <meta-data
+            android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+            android:value="com.google.firebase.components.ComponentRegistrar" />
+
+        <!-- Internet Permission -->
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- Your Activities -->
         <activity
             android:name="Activity.StartupActivity"
             android:exported="true">
@@ -26,7 +47,7 @@
             android:name="Activity.CreateAccountActivity"
             android:exported="true">
         </activity>
-        <activity android:name="Activity.loginActivity" >
+        <activity android:name="Activity.LoginActivity" >
         </activity>
         <activity android:name="Activity.CreateAccountQuizActivity"
             android:exported="true">

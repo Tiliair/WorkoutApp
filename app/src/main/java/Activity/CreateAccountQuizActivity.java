@@ -27,6 +27,7 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
     EditText weight;
     String selectedSex;
     String selectedGoal;
+    String username;
 
     /**
      * On Create is when the user first makes the account this form is called
@@ -39,6 +40,7 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         changeLayout1();
+        username = getIntent().getStringExtra("USERNAME");
     }
 
     /**
@@ -210,7 +212,8 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
                 int goal = Integer.parseInt(selectedGoal);
 
                 // Insert data into the database
-                boolean inserted = new DatabaseHelper(CreateAccountQuizActivity.this).insertAccountInfo(height, weightValue, age, sex, goal);
+                DatabaseHelper databaseHelper = new DatabaseHelper();
+                boolean inserted = databaseHelper.insertAccountInfo(username, height, weightValue, age, sex, goal);
 
                 // Check if data was inserted successfully
                 if (inserted) {

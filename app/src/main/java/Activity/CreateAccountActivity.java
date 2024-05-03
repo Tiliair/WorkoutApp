@@ -23,7 +23,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         setContentView(R.layout.create_account);
 
         // Initialize DatabaseHelper
-        databaseHelper = new DatabaseHelper(this);
+        databaseHelper = new DatabaseHelper(); // No need to pass context here
 
         // Initialize views
         username = findViewById(R.id.username);
@@ -49,18 +49,24 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
 
         // Check if the account already exists
-        if (databaseHelper.checkAccountExists(usernameText)) {
-            Toast.makeText(this, "Username already exists. Please choose a different one.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Save the username and password
-        boolean success = databaseHelper.insertAccount(usernameText, passwordText);
-        if (success) {
-            Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(CreateAccountActivity.this, CreateAccountQuizActivity.class));
-        } else {
-            Toast.makeText(this, "Failed to create account. Please try again.", Toast.LENGTH_SHORT).show();
-        }
+        databaseHelper.checkAccountExists(usernameText, new DatabaseHelper.AccountExistsListener() {
+            @Override
+            public void onAccountCheck(boolean accountExists) {
+                if (accountExists) {
+                    // Username already exists
+                    Toast.makeText(CreateAccountActivity.this, "Username already exists. Please choose a different one.", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Save the username and password
+                    boolean success = databaseHelper.insertAccount(usernameText, passwordText);
+                    if (success) {
+                        Toast.makeText(CreateAccountActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
+                        // Proceed to next activity
+                        startActivity(new Intent(CreateAccountActivity.this, CreateAccountActivity.class));
+                    } else {
+                        Toast.makeText(CreateAccountActivity.this, "Failed to create account. Please try again.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
     }
 }
