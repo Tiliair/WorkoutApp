@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.myapplication.DatabaseHelper;
 import com.example.myapplication.R;
 import com.google.android.material.button.MaterialButton;
@@ -61,7 +60,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     if (success) {
                         Toast.makeText(CreateAccountActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
                         // Proceed to next activity
-                        startActivity(new Intent(CreateAccountActivity.this, CreateAccountActivity.class));
+                        startActivity(new Intent(CreateAccountActivity.this, CreateAccountQuizActivity.class));
                     } else {
                         Toast.makeText(CreateAccountActivity.this, "Failed to create account. Please try again.", Toast.LENGTH_SHORT).show();
                     }

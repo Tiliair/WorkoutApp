@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplication">
 
-    <uses-permission android:name="android.permission.INTERNET" >
+    <!-- Firebase Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
-    </uses-permission>
-
+    <!-- Add Firebase Realtime Database persistence -->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -18,10 +18,10 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
 
-        <!-- Add Google Services Plugin Configuration -->
+        <!-- Firebase Database persistence -->
         <meta-data
-            android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-            android:value="com.google.firebase.components.ComponentRegistrar" />
+            android:name="com.google.firebase.database.collection_developer_mode"
+            android:value="true" />
 
         <!-- Internet Permission -->
         <service
