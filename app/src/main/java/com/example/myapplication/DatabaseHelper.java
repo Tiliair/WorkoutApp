@@ -1,5 +1,4 @@
 package com.example.myapplication;
-import android.content.Context;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,8 +17,7 @@ public class DatabaseHelper {
 
     public boolean insertAccount(String username, String password) {
         try {
-            Account account = new Account(username, password);
-            databaseReference.child(username).setValue(account);
+            databaseReference.child(username).setValue(new Account(username, password));
             return true; // Return true if insertion is successful
         } catch (Exception e) {
             e.printStackTrace();
@@ -29,8 +27,7 @@ public class DatabaseHelper {
 
     public boolean insertAccountInfo(String username, int height, int weight, int age, String sex, int goal) {
         try {
-            AccountInfo accountInfo = new AccountInfo(height, weight, age, sex, goal);
-            databaseReference.child(username).child("info").setValue(accountInfo);
+            databaseReference.child(username).child("info").setValue(new AccountInfo(height, weight, age, sex, goal));
             return true; // Return true if insertion is successful
         } catch (Exception e) {
             e.printStackTrace();
@@ -43,16 +40,12 @@ public class DatabaseHelper {
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                boolean passwordCorrect = false;
                 if (dataSnapshot.exists()) {
                     Account account = dataSnapshot.getValue(Account.class);
-                    if (account != null && account.getPassword().equals(password)) {
-                        listener.onPasswordCheck(true);
-                    } else {
-                        listener.onPasswordCheck(false);
-                    }
-                } else {
-                    listener.onPasswordCheck(false);
+                    passwordCorrect = account != null && account.getPassword().equals(password);
                 }
+                listener.onPasswordCheck(passwordCorrect);
             }
 
             @Override

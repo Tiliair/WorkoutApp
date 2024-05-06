@@ -1,14 +1,17 @@
+// CreateAccountActivity.java
+
 package Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.DatabaseHelper;
 import com.example.myapplication.R;
-import com.google.android.material.button.MaterialButton;
-import android.widget.EditText;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
@@ -22,19 +25,29 @@ public class CreateAccountActivity extends AppCompatActivity {
         setContentView(R.layout.create_account);
 
         // Initialize DatabaseHelper
-        databaseHelper = new DatabaseHelper(); // No need to pass context here
+        databaseHelper = new DatabaseHelper();
 
-        // Initialize views
+        // Find views
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
+        Button createAccountButton = findViewById(R.id.createAccount_submit);
+        Button backButton = findViewById(R.id.backBtn);
 
-        // Handle Create Account button click
-        MaterialButton createAccountButton = findViewById(R.id.createAccount_submit);
-        createAccountButton.setOnClickListener(v -> createAccount());
+        // Set click listener for create account button
+        createAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createAccount();
+            }
+        });
 
-        // Handle Back button click
-        MaterialButton backButton = findViewById(R.id.backBtn);
-        backButton.setOnClickListener(v -> onBackPressed());
+        // Set click listener for back button
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     private void createAccount() {

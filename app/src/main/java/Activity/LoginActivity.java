@@ -1,3 +1,5 @@
+// LoginActivity.java
+
 package Activity;
 
 import android.content.Intent;
@@ -26,39 +28,16 @@ public class LoginActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper();
 
         // Find views
-        Button loginButton = findViewById(R.id.login_submit);
-        Button backButton = findViewById(R.id.backBtn);
         usernameEditText = findViewById(R.id.username);
         passwordEditText = findViewById(R.id.password);
+        Button loginButton = findViewById(R.id.login_submit);
+        Button backButton = findViewById(R.id.backBtn);
 
         // Set click listener for login button
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get username and password from EditText fields
-                String username = usernameEditText.getText().toString().trim();
-                String password = passwordEditText.getText().toString().trim();
-
-                // Check if username or password is empty
-                if (username.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "Please enter both username and password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // Check password
-                databaseHelper.checkPassword(username, password, new DatabaseHelper.PasswordCheckListener() {
-                    @Override
-                    public void onPasswordCheck(boolean passwordCorrect) {
-                        if (passwordCorrect) {
-                            // Password is correct, login successful
-                            Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this, MainMenuActivity.class));
-                        } else {
-                            // Password is incorrect
-                            Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                loginUser();
             }
         });
 
@@ -66,7 +45,33 @@ public class LoginActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, StartupActivity.class));
+                onBackPressed();
+            }
+        });
+    }
+
+    private void loginUser() {
+        String username = usernameEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+
+        // Check if username or password is empty
+        if (username.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please enter both username and password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Check password
+        databaseHelper.checkPassword(username, password, new DatabaseHelper.PasswordCheckListener() {
+            @Override
+            public void onPasswordCheck(boolean passwordCorrect) {
+                if (passwordCorrect) {
+                    // Password is correct, login successful
+                    Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, MainMenuActivity.class));
+                } else {
+                    // Password is incorrect
+                    Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
