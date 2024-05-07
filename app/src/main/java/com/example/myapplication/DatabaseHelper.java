@@ -40,21 +40,6 @@ public class DatabaseHelper {
         }
     }
 
-    public boolean insertUser(String username, String password, int height, int weight, int age, String sex, int goal) {
-        try {
-            databaseReference.child(username).child("password").setValue(password);
-            databaseReference.child(username).child("info").child("height").setValue(height);
-            databaseReference.child(username).child("info").child("weight").setValue(weight);
-            databaseReference.child(username).child("info").child("age").setValue(age);
-            databaseReference.child(username).child("info").child("sex").setValue(sex);
-            databaseReference.child(username).child("info").child("goal").setValue(goal);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
     public void checkPassword(String username, String password, final PasswordCheckListener listener) {
         DatabaseReference userRef = databaseReference.child(username).child("password");
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -93,52 +78,6 @@ public class DatabaseHelper {
         });
     }
 
-    // Define Account and AccountInfo classes
-    private static class Account {
-        private String username;
-        private String password;
-
-        public Account() {
-            // Default constructor required for Firebase
-        }
-
-        public Account(String username, String password) {
-            this.username = username;
-            this.password = password;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-    }
-
-    private static class AccountInfo {
-        private int height;
-        private int weight;
-        private int age;
-        private String sex;
-        private int goal;
-
-        public AccountInfo() {
-            // Default constructor required for Firebase
-        }
-
-        public AccountInfo(int height, int weight, int age, String sex, int goal) {
-            this.height = height;
-            this.weight = weight;
-            this.age = age;
-            this.sex = sex;
-            this.goal = goal;
-        }
-
-        // Define getters for the fields
-    }
-
-    // Listener interfaces for checking password and account existence
     public interface PasswordCheckListener {
         void onPasswordCheck(boolean passwordCorrect);
     }
