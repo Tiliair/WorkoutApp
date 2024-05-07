@@ -12,44 +12,67 @@ public class DatabaseHelper {
 
     public DatabaseHelper() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("accounts");
+        databaseReference = firebaseDatabase.getReference("users");
     }
 
     public boolean insertAccount(String username, String password) {
         try {
-            databaseReference.child(username).setValue(new Account(username, password));
-            return true; // Return true if insertion is successful
+            databaseReference.child(username).child("password").setValue(password);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false; // Return false if an exception occurs during insertion
+            return false;
         }
     }
 
     public boolean insertAccountInfo(String username, int height, int weight, int age, String sex, int goal) {
         try {
-            databaseReference.child(username).child("info").setValue(new AccountInfo(height, weight, age, sex, goal));
-            return true; // Return true if insertion is successful
+            DatabaseReference userInfoRef = databaseReference.child(username).child("info");
+            userInfoRef.child("height").setValue(height);
+            userInfoRef.child("weight").setValue(weight);
+            userInfoRef.child("age").setValue(age);
+            userInfoRef.child("sex").setValue(sex);
+            userInfoRef.child("goal").setValue(goal);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false; // Return false if an exception occurs during insertion
+            return false;
+        }
+    }
+
+    public boolean insertUser(String username, String password, int height, int weight, int age, String sex, int goal) {
+        try {
+            databaseReference.child(username).child("password").setValue(password);
+            databaseReference.child(username).child("info").child("height").setValue(height);
+            databaseReference.child(username).child("info").child("weight").setValue(weight);
+            databaseReference.child(username).child("info").child("age").setValue(age);
+            databaseReference.child(username).child("info").child("sex").setValue(sex);
+            databaseReference.child(username).child("info").child("goal").setValue(goal);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
     public void checkPassword(String username, String password, final PasswordCheckListener listener) {
-        DatabaseReference userRef = databaseReference.child(username);
+        DatabaseReference userRef = databaseReference.child(username).child("password");
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                boolean passwordCorrect = false;
                 if (dataSnapshot.exists()) {
-                    Account account = dataSnapshot.getValue(Account.class);
-                    passwordCorrect = account != null && account.getPassword().equals(password);
+                    String storedPassword = dataSnapshot.getValue(String.class);
+                    boolean passwordCorrect = storedPassword.equals(password);
+                    listener.onPasswordCheck(passwordCorrect);
+                } else {
+                    // Username does not exist
+                    listener.onPasswordCheck(false);
                 }
-                listener.onPasswordCheck(passwordCorrect);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                // Handle error
                 listener.onPasswordCheck(false);
             }
         });
