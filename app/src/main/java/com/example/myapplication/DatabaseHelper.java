@@ -8,7 +8,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class DatabaseHelper {
 
-    private DatabaseReference databaseReference;
+    private final DatabaseReference databaseReference;
 
     public DatabaseHelper() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();

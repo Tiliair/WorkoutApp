@@ -20,8 +20,8 @@ public class StartupActivity extends AppCompatActivity {
 
 
 
-        Button CREATE_ACCOUNT = (Button) findViewById(R.id.createAccount_btn);
-        Button LOGIN = (Button) findViewById(R.id.login_btn);
+        Button CREATE_ACCOUNT = findViewById(R.id.createAccount_btn);
+        Button LOGIN = findViewById(R.id.login_btn);
 
         CREATE_ACCOUNT.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -73,7 +73,10 @@ public class CreateAccountActivity extends AppCompatActivity {
                     if (success) {
                         Toast.makeText(CreateAccountActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
                         // Proceed to next activity
-                        startActivity(new Intent(CreateAccountActivity.this, CreateAccountQuizActivity.class));
+                        Intent intent = new Intent(CreateAccountActivity.this, CreateAccountQuizActivity.class);
+                        intent.putExtra("USERNAME", usernameText); // Pass username to next activity
+                        startActivity(intent);
+
                     } else {
                         Toast.makeText(CreateAccountActivity.this, "Failed to create account. Please try again.", Toast.LENGTH_SHORT).show();
                     }
