@@ -15,62 +15,134 @@ public class DatabaseHelper {
         databaseReference = firebaseDatabase.getReference("accounts");
     }
 
+    // Method to insert an account
     public boolean insertAccount(String username, String password) {
         try {
             databaseReference.child(username).setValue(new Account(username, password));
-            return true; // Return true if insertion is successful
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false; // Return false if an exception occurs during insertion
+            return false;
         }
     }
 
+    // Method to insert account info
     public boolean insertAccountInfo(String username, int height, int weight, int age, String sex, int goal) {
         try {
             databaseReference.child(username).child("info").setValue(new AccountInfo(height, weight, age, sex, goal));
-            return true; // Return true if insertion is successful
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false; // Return false if an exception occurs during insertion
+            return false;
         }
     }
 
-    public void checkPassword(String username, String password, final PasswordCheckListener listener) {
-        DatabaseReference userRef = databaseReference.child(username);
-        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+    // Method to retrieve the user's height
+    public int getUserHeight(String username) {
+        final int[] height = {0};
+        DatabaseReference userInfoRef = databaseReference.child(username).child("info");
+        userInfoRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                boolean passwordCorrect = false;
-                if (dataSnapshot.exists()) {
-                    Account account = dataSnapshot.getValue(Account.class);
-                    passwordCorrect = account != null && account.getPassword().equals(password);
+                AccountInfo accountInfo = dataSnapshot.getValue(AccountInfo.class);
+                if (accountInfo != null) {
+                    height[0] = accountInfo.getHeight();
                 }
-                listener.onPasswordCheck(passwordCorrect);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                listener.onPasswordCheck(false);
+                height[0] = 0;
             }
         });
+        return height[0];
     }
 
-    public void checkAccountExists(String username, final AccountExistsListener listener) {
-        DatabaseReference userRef = databaseReference.child(username);
-        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+    // Method to retrieve the user's weight
+    public int getUserWeight(String username) {
+        final int[] weight = {0};
+        DatabaseReference userInfoRef = databaseReference.child(username).child("info");
+        userInfoRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                listener.onAccountCheck(dataSnapshot.exists());
+                AccountInfo accountInfo = dataSnapshot.getValue(AccountInfo.class);
+                if (accountInfo != null) {
+                    weight[0] = accountInfo.getWeight();
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                listener.onAccountCheck(false);
+                weight[0] = 0;
             }
         });
+        return weight[0];
     }
 
-    // Define Account and AccountInfo classes
+    // Method to retrieve the user's age
+    public int getUserAge(String username) {
+        final int[] age = {0};
+        DatabaseReference userInfoRef = databaseReference.child(username).child("info");
+        userInfoRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                AccountInfo accountInfo = dataSnapshot.getValue(AccountInfo.class);
+                if (accountInfo != null) {
+                    age[0] = accountInfo.getAge();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                age[0] = 0;
+            }
+        });
+        return age[0];
+    }
+
+    // Method to retrieve the user's sex
+    public String getUserSex(String username) {
+        final String[] sex = {""};
+        DatabaseReference userInfoRef = databaseReference.child(username).child("info");
+        userInfoRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                AccountInfo accountInfo = dataSnapshot.getValue(AccountInfo.class);
+                if (accountInfo != null) {
+                    sex[0] = accountInfo.getSex();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                sex[0] = "";
+            }
+        });
+        return sex[0];
+    }
+
+    // Method to retrieve the user's goal
+    public int getUserGoal(String username) {
+        final int[] goal = {0};
+        DatabaseReference userInfoRef = databaseReference.child(username).child("info");
+        userInfoRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                AccountInfo accountInfo = dataSnapshot.getValue(AccountInfo.class);
+                if (accountInfo != null) {
+                    goal[0] = accountInfo.getGoal();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                goal[0] = 0;
+            }
+        });
+        return goal[0];
+    }
+
+    // Inner classes to store account and account information
     private static class Account {
         private String username;
         private String password;
@@ -112,15 +184,24 @@ public class DatabaseHelper {
             this.goal = goal;
         }
 
-        // Define getters for the fields
-    }
+        public int getHeight() {
+            return height;
+        }
 
-    // Listener interfaces for checking password and account existence
-    public interface PasswordCheckListener {
-        void onPasswordCheck(boolean passwordCorrect);
-    }
+        public int getWeight() {
+            return weight;
+        }
 
-    public interface AccountExistsListener {
-        void onAccountCheck(boolean accountExists);
+        public int getAge() {
+            return age;
+        }
+
+        public String getSex() {
+            return sex;
+        }
+
+        public int getGoal() {
+            return goal;
+        }
     }
 }
