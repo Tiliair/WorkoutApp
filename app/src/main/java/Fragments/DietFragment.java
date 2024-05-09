@@ -19,7 +19,7 @@ public class DietFragment extends Fragment {
 
     private DatabaseHelper databaseHelper;
     private String currentUsername; // Placeholder: Replace with actual username retrieval logic
-    private TextView caloriesTextView;gg
+    private TextView caloriesTextView
 
     @Nullable
     @Override
