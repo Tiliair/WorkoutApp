@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login);
 
         // Instantiate DatabaseHelper
-        databaseHelper = new DatabaseHelper();
+        databaseHelper = new DatabaseHelper(this);
 
         // Find views
         usernameEditText = findViewById(R.id.username);

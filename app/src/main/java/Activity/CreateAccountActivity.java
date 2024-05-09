@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.DatabaseHelper;
 import com.example.myapplication.R;
+import com.google.firebase.FirebaseApp;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
@@ -23,9 +24,10 @@ public class CreateAccountActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_account);
+        FirebaseApp.initializeApp(this);
 
         // Initialize DatabaseHelper
-        databaseHelper = new DatabaseHelper();
+        databaseHelper = new DatabaseHelper(this);
 
         // Find views
         username = findViewById(R.id.username);
@@ -73,7 +75,10 @@ public class CreateAccountActivity extends AppCompatActivity {
                     if (success) {
                         Toast.makeText(CreateAccountActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
                         // Proceed to next activity
-                        startActivity(new Intent(CreateAccountActivity.this, CreateAccountQuizActivity.class));
+                        Intent intent = new Intent(CreateAccountActivity.this, CreateAccountQuizActivity.class);
+                        intent.putExtra("USERNAME", usernameText); // Pass username to next activity
+                        startActivity(intent);
+
                     } else {
                         Toast.makeText(CreateAccountActivity.this, "Failed to create account. Please try again.", Toast.LENGTH_SHORT).show();
                     }
