@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.content.Context;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -10,7 +12,7 @@ public class DatabaseHelper {
 
     private final DatabaseReference databaseReference;
 
-    public DatabaseHelper() {
+    public DatabaseHelper(Context context) {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("users");
     }

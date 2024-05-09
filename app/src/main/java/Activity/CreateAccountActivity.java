@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.DatabaseHelper;
 import com.example.myapplication.R;
+import com.google.firebase.FirebaseApp;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
@@ -23,9 +24,10 @@ public class CreateAccountActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_account);
+        FirebaseApp.initializeApp(this);
 
         // Initialize DatabaseHelper
-        databaseHelper = new DatabaseHelper();
+        databaseHelper = new DatabaseHelper(this);
 
         // Find views
         username = findViewById(R.id.username);

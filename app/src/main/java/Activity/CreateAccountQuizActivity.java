@@ -14,28 +14,32 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.DatabaseHelper;
 import com.example.myapplication.R;
+import com.google.firebase.FirebaseApp;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class CreateAccountQuizActivity extends AppCompatActivity {
     RadioGroup radioGroup;
-    RadioButton radioButton;
     Spinner heightSpinner;
     EditText weight;
     String selectedSex;
     String selectedGoal;
-    public String username;
+    String username;
+    private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.newaccount1);
+        FirebaseApp.initializeApp(this);
+        databaseHelper = new DatabaseHelper(this);
         Intent intent = getIntent();
         username = intent.getStringExtra("USERNAME");
         changeLayout1();
     }
 
     public void changeLayout1() {
-        setContentView(R.layout.newaccount1);
         radioGroup = findViewById(R.id.radioGroup0);
         weight = findViewById(R.id.weight);
         heightSpinner = findViewById(R.id.heightSpinner);
@@ -64,7 +68,7 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please select a gender", Toast.LENGTH_SHORT).show();
                 } else {
                     int radioId = radioGroup.getCheckedRadioButtonId();
-                    radioButton = findViewById(radioId);
+                    RadioButton radioButton = findViewById(radioId);
                     selectedSex = radioButton.getText().toString();
                     changeLayout2();
                 }
@@ -110,39 +114,15 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
         monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         monthSpinner.setAdapter(monthAdapter);
 
-        String[] monthsArray = getResources().getStringArray(R.array.Months);
-        String[] monthsWithTitle = new String[monthsArray.length + 1];
-        monthsWithTitle[0] = "Month";
-        System.arraycopy(monthsArray, 0, monthsWithTitle, 1, monthsArray.length);
-        ArrayAdapter<String> monthAdapterWithTitle = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, monthsWithTitle);
-        monthAdapterWithTitle.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        monthSpinner.setAdapter(monthAdapterWithTitle);
-
         Spinner daySpinner = findViewById(R.id.daySpinner);
         ArrayAdapter<CharSequence> dayAdapter = ArrayAdapter.createFromResource(this, R.array.Days, android.R.layout.simple_spinner_item);
         dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         daySpinner.setAdapter(dayAdapter);
 
-        String[] daysArray = getResources().getStringArray(R.array.Days);
-        String[] daysWithTitle = new String[daysArray.length + 1];
-        daysWithTitle[0] = "Day";
-        System.arraycopy(daysArray, 0, daysWithTitle, 1, daysArray.length);
-        ArrayAdapter<String> dayAdapterWithTitle = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, daysWithTitle);
-        dayAdapterWithTitle.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        daySpinner.setAdapter(dayAdapterWithTitle);
-
         Spinner yearSpinner = findViewById(R.id.yearSpinner);
         ArrayAdapter<CharSequence> yearAdapter = ArrayAdapter.createFromResource(this, R.array.years, android.R.layout.simple_spinner_item);
         yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         yearSpinner.setAdapter(yearAdapter);
-
-        String[] yearsArray = getResources().getStringArray(R.array.years);
-        String[] yearsWithTitle = new String[yearsArray.length + 1];
-        yearsWithTitle[0] = "Year";
-        System.arraycopy(yearsArray, 0, yearsWithTitle, 1, yearsArray.length);
-        ArrayAdapter<String> yearAdapterWithTitle = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, yearsWithTitle);
-        yearAdapterWithTitle.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        yearSpinner.setAdapter(yearAdapterWithTitle);
 
         Button backButton = findViewById(R.id.backBtnToNewAccount2);
         Button nextButton = findViewById(R.id.nextBtnToMainMenu);
@@ -169,11 +149,11 @@ public class CreateAccountQuizActivity extends AppCompatActivity {
                     String sex = selectedSex;
                     int goal = Integer.parseInt(selectedGoal);
 
-                    DatabaseHelper databaseHelper = new DatabaseHelper();
                     boolean inserted = databaseHelper.insertAccountInfo(username, height, weightValue, age, sex, goal);
 
                     if (inserted) {
                         startActivity(new Intent(CreateAccountQuizActivity.this, MainMenuActivity.class));
+                        finish(); // finish current activity
                     } else {
                         Toast.makeText(CreateAccountQuizActivity.this, "Failed to create account. Please try again.", Toast.LENGTH_SHORT).show();
                     }
