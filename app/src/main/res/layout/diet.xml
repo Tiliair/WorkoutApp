@@ -19,6 +19,18 @@
         android:gravity="center"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Coming Soon!!"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:textSize="50dp"
+        android:textColor="@color/black"
+        >
+
+    </TextView>
+
     <include layout="@layout/tabs"/>
 
 </RelativeLayout>
