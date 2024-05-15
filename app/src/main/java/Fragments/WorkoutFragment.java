@@ -10,9 +10,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.myapplication.R;
 
+import java.util.Stack;
+
 public class WorkoutFragment extends Fragment implements View.OnClickListener {
 
-    private int initialLayoutId; // Store the initial layout resource ID
+    private Stack<Integer> layoutStack = new Stack<>();
     private View rootView;
 
     public WorkoutFragment() {
@@ -23,18 +25,26 @@ public class WorkoutFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.workouts, container, false);
-        initialLayoutId = R.layout.workouts; // Save the initial layout resource ID
 
-        Button BicepBTN = rootView.findViewById(R.id.BicepBTN);
-        Button TricepBTN = rootView.findViewById(R.id.TricepsBTN);
-        Button LegBTN = rootView.findViewById(R.id.LegsBTN);
-        Button CoreBTN = rootView.findViewById(R.id.CoreBTN);
-        Button BackBTN = rootView.findViewById(R.id.BackBTN);
-        Button ShoulderBTN = rootView.findViewById(R.id.ShoulderBTN);
-        Button ChestBTN = rootView.findViewById(R.id.ChestBTN);
-        Button GluteBTN = rootView.findViewById(R.id.GlutesBTN);
+        // Initialize the stack with the initial layout
+        layoutStack.push(R.layout.workouts);
 
-        // Set OnClickListener for each button
+        initializeButtons(rootView);
+
+        return rootView;
+    }
+
+    private void initializeButtons(View view) {
+        Button BicepBTN = view.findViewById(R.id.BicepBTN);
+        Button TricepBTN = view.findViewById(R.id.TricepsBTN);
+        Button LegBTN = view.findViewById(R.id.LegsBTN);
+        Button CoreBTN = view.findViewById(R.id.CoreBTN);
+        Button BackBTN = view.findViewById(R.id.BackBTN);
+        Button ShoulderBTN = view.findViewById(R.id.ShoulderBTN);
+        Button ChestBTN = view.findViewById(R.id.ChestBTN);
+        Button GluteBTN = view.findViewById(R.id.GlutesBTN);
+        Button backBtn = view.findViewById(R.id.backBtn);
+
         BicepBTN.setOnClickListener(this);
         TricepBTN.setOnClickListener(this);
         LegBTN.setOnClickListener(this);
@@ -43,14 +53,11 @@ public class WorkoutFragment extends Fragment implements View.OnClickListener {
         ShoulderBTN.setOnClickListener(this);
         ChestBTN.setOnClickListener(this);
         GluteBTN.setOnClickListener(this);
-
-
-        return rootView;
+        backBtn.setOnClickListener(v -> onBackPressed());
     }
 
     @Override
     public void onClick(View v) {
-        // Handle button clicks here
         int viewId = v.getId();
         if (viewId == R.id.BicepBTN) {
             switchToWorkoutsLayout(R.layout.bicepworkouts);
@@ -72,22 +79,35 @@ public class WorkoutFragment extends Fragment implements View.OnClickListener {
     }
 
     private void switchToWorkoutsLayout(int layoutId) {
-        initialLayoutId = layoutId; // Update the initial layout resource ID
-        // Inflate the specified workouts layout
-        View workoutsView = getLayoutInflater().inflate(layoutId, (ViewGroup) rootView, false);
+        layoutStack.push(layoutId); // Save the current layout ID to the stack
 
-        // Replace the current fragment's view with the new layout
+        // Inflate the specified workouts layout
         ViewGroup parentView = (ViewGroup) rootView.getParent();
         if (parentView != null) {
+            View workoutsView = getLayoutInflater().inflate(layoutId, parentView, false);
             parentView.removeAllViews();
             parentView.addView(workoutsView);
+            initializeButtons(workoutsView); // Reinitialize buttons in the new layout
         }
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        // Reset to initial layout when the fragment is created or revisited
-        switchToWorkoutsLayout(initialLayoutId);
+    private void onBackPressed() {
+        if (!layoutStack.isEmpty()) {
+            layoutStack.pop(); // Remove the current layout
+            if (!layoutStack.isEmpty()) {
+                int previousLayoutId = layoutStack.peek(); // Get the previous layout
+                // Switch to the previous layout
+                ViewGroup parentView = (ViewGroup) rootView.getParent();
+                if (parentView != null) {
+                    View previousView = getLayoutInflater().inflate(previousLayoutId, parentView, false);
+                    parentView.removeAllViews();
+                    parentView.addView(previousView);
+                    initializeButtons(previousView); // Reinitialize buttons in the previous layout
+                }
+            } else {
+                // If stack is empty, exit the fragment
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        }
     }
 }
